@@ -81,17 +81,17 @@ class wpcHideDlm {
     	}
     
     	$screen = get_current_screen();
-		if ( ! $screen || 'upload' !== $screen->id || 'attachment' !== $screen->post_type ) {
+    	if ( ! $screen || 'upload' !== $screen->id ) { //|| 'attachment' !== $screen->post_type ) {
         	return;
 		}
 		
 		$wp_query->set(
 			'meta_query',
-			array(
+			array( array(
 	    		'key'		=> '_wp_attached_file',
 	    		'value'		=> 'dlm_uploads',
 	    		'compare'	=> 'NOT LIKE'
-	    	)
+	    	) )
 	    );
 		
 		return;
