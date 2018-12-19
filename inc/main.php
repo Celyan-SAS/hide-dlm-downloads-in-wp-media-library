@@ -85,13 +85,16 @@ class wpcHideDlm {
         	return;
 		}
 		
+		/** Modify existing meta query **/
+		$meta_query = $wp_query->get('meta_query');
+		$meta_query[] = array(
+    		'key'		=> '_wp_attached_file',
+    		'value'		=> 'dlm_uploads',
+    		'compare'	=> 'NOT LIKE'
+    	);
 		$wp_query->set(
 			'meta_query',
-			array( array(
-	    		'key'		=> '_wp_attached_file',
-	    		'value'		=> 'dlm_uploads',
-	    		'compare'	=> 'NOT LIKE'
-	    	) )
+			$meta_query
 	    );
 		
 		return;
