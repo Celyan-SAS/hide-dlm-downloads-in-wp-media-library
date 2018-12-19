@@ -18,7 +18,7 @@ class wpcHideDlm {
 		add_filter( 'ajax_query_attachments_args', array( $this, 'hide_dlm_media_overlay_view' ) );
 		
 		/** Filter WP Media Manager list view **/
-		add_action( 'pre_get_posts', array( $this, 'hide_dlm_media_list_view' ) );
+		add_action( 'pre_get_posts', array( $this, 'hide_dlm_media_list_view' ), 5, 1 );
 	}
 	
 	/**
@@ -70,7 +70,7 @@ class wpcHideDlm {
 	 * @param object $wp_query
 	 * @return void
 	 */
-	public function hide_dlm_media_list_view( $wp_query ) {
+	public function hide_dlm_media_list_view( &$wp_query ) {
 		
 		if ( ! is_admin() ) {
 	        return;
