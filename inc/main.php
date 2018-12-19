@@ -81,7 +81,7 @@ class wpcHideDlm {
     	}
     
     	$screen = get_current_screen();
-    	if ( ! $screen || 'upload' !== $screen->id ) { //|| 'attachment' !== $screen->post_type ) {
+    	if ( ! $screen || 'upload' !== $screen->id || 'attachment' !== $screen->post_type ) {
         	return;
 		}
 		
